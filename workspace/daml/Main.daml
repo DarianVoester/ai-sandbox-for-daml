@@ -1,0 +1,34 @@
+module Main where
+
+import Daml.Script
+
+template Task
+  with
+    owner : Party
+    description : Text
+    isDone : Bool
+  where
+    signatory owner
+
+    choice Complete : ContractId Task
+      controller owner
+      do
+        create this with isDone = True
+
+setup : Script ()
+setup = script do
+  -- 1. Partei anlegen
+  alice <- allocateParty "Alice"
+
+  -- 2. Alice erstellt eine neue, unerledigte Aufgabe
+  taskCid <- submit alice do
+    createCmd Task with
+      owner = alice
+      description = "RAG Tutor Umgebung einrichten"
+      isDone = False
+
+  -- 3. Alice führt die Choice aus und schließt die Aufgabe ab
+  submit alice do
+    exerciseCmd taskCid Complete
+
+  pure ()

@@ -1,0 +1,43 @@
+{
+  "name": "Daml Sandbox & AI Tutor",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "installMaven": "false",
+      "installGradle": "false"
+    }
+  },
+  "remoteUser": "vscode",
+  "remoteEnv": {
+    "PATH": "/home/vscode/.daml/bin:${containerEnv:PATH}",
+    "PYTHONUNBUFFERED": "1"
+  },
+  "forwardPorts": [6865, 7575, 8501],
+  "portsAttributes": {
+    "6865": {
+      "label": "Canton Ledger API (gRPC)",
+      "onAutoForward": "silent",
+      "visibility": "private"
+    },
+    "7575": {
+      "label": "Daml JSON API",
+      "onAutoForward": "silent",
+      "visibility": "private"
+    },
+    "8501": {
+      "label": "Daml AI Tutor (Streamlit)",
+      "onAutoForward": "openBrowser",
+      "visibility": "private"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "DigitalAssetHoldingsLLC.daml",
+        "ms-python.python"
+      ]
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh"
+}

@@ -1,0 +1,7 @@
+.venv/
+.qdrant_db/
+workspace/.daml/
+__pycache__/
+*.pyc
+.env
+bootstrap.sh
