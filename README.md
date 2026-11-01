@@ -1,4 +1,4 @@
-# Daml Smart Contract Sandbox & RAG Tutor
+# Smart Contract Sandbox & AI Tutor for Daml (Canton)
 
 An interactive, browser-based learning environment for Daml and Canton built for GitHub Codespaces. It combines an isolated Daml SDK workspace with a Retrieval-Augmented Generation (RAG) AI Tutor powered by Qdrant and SentenceTransformers.
 
