@@ -1,11 +1,10 @@
-Daml Smart Contract Sandbox & RAG Tutor
+Smart Contract Sandbox & AI Tutor for Daml (Canton)
 Copyright 2026 Darian Voester
 
 This product includes software developed by Darian Voester.
 
-=========================================================================
-AI Assistance & Liability Disclosure
-=========================================================================
+## AI Assistance & Liability Disclosure
+
 Substantial portions of the source code, configuration, and documentation 
 in this repository were generated with the assistance of Google Gemini 
 (Large Language Model by Google LLC). 
@@ -16,9 +15,8 @@ verified by a professional software or security engineer. The software is
 provided "AS IS", without any warranty of correctness, completeness, or 
 security. Any use of this repository is entirely at the user's own risk.
 
-=========================================================================
-Third-Party Software & Trademarks
-=========================================================================
+## Third-Party Software & Trademarks
+
 This repository interacts with or depends upon the following third-party 
 components, which are subject to their respective open-source licenses:
 
