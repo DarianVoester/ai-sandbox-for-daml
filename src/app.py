@@ -164,8 +164,8 @@ def query_llm(provider: str, model_id: str, api_key: str, base_url: str, user_pa
     return resp.json()["choices"][0]["message"]["content"]
 
 
-st.set_page_config(page_title="Daml Sandbox & AI Tutor", layout="wide")
-st.title("Daml Smart Contract Sandbox & RAG Tutor")
+st.set_page_config(page_title="AI Sandbox for Daml", layout="wide")
+st.title("Smart Contract Tutor for Daml")
 
 with st.sidebar:
     st.header("LLM Configuration")
