@@ -1,7 +1,9 @@
-streamlit==1.39.0
-qdrant-client==1.12.0
-sentence-transformers==3.2.1
-openai==1.52.2
-pydantic==2.9.2
-anthropic==0.39.0
-litellm
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+streamlit>=1.39.0
+qdrant-client>=1.12.0
+sentence-transformers>=3.2.1
+requests>=2.32.0
+huggingface-hub>=0.26.0
+llama-cpp-python>=0.3.1
+pydantic>=2.9.2

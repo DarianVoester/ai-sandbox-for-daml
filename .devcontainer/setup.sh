@@ -1,19 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DAML_VERSION="2.9.4"
-
-echo "[1/4] Installing Daml SDK v${DAML_VERSION}..."
+echo "[1/4] Installing latest stable Daml SDK..."
 if [ ! -d "$HOME/.daml" ]; then
-    curl -sSL https://get.daml.com/ | sh -s "${DAML_VERSION}"
+    # Ohne Versions-Parameter installiert das Skript automatisch das neueste stabile Release
+    curl -sSL https://get.daml.com/ | sh
 fi
 export PATH="$HOME/.daml/bin:$PATH"
 
-echo "[2/4] Creating isolated Python virtual environment..."
+# Aktuell installierte SDK-Version auslesen und in workspace/daml.yaml synchronisieren
+INSTALLED_DAML_VERSION=$(daml version | awk '/[0-9]+\.[0-9]+\.[0-9]+/ {print $1; exit}')
+if [ -n "${INSTALLED_DAML_VERSION}" ] && [ -f "workspace/daml.yaml" ]; then
+    sed -i "s/^sdk-version:.*/sdk-version: ${INSTALLED_DAML_VERSION}/" workspace/daml.yaml
+    echo "Synchronized workspace/daml.yaml to SDK v${INSTALLED_DAML_VERSION}"
+fi
+
+echo "[2/4] Creating isolated Python virtual environment & compiling CPU dependencies..."
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
+# Verhindert 'Illegal instruction (core dumped)' auf Standard-Codespace-CPUs:
+pip install llama-cpp-python --no-binary llama-cpp-python --no-cache-dir
 
 echo "[3/4] Compiling initial Daml workspace project..."
 cd workspace

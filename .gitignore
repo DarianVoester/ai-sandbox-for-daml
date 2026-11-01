@@ -2,6 +2,5 @@
 .qdrant_db/
 workspace/.daml/
 __pycache__/
-*.pyc
+*.dar
 .env
-bootstrap.sh

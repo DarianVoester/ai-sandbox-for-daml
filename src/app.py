@@ -209,22 +209,36 @@ with st.sidebar:
     else:
         preset = st.selectbox(
             "Endpoint Preset",
-            ["OpenAI Official", "OpenRouter (All Models)", "Groq (Fast & Free Tier)", "Custom Base URL"],
+            [
+                "Google Gemini (Official)",
+                "OpenAI Official",
+                "OpenRouter (All Models)",
+                "Groq (Fast & Free Tier)",
+                "Custom Base URL",
+            ],
         )
-        if preset == "OpenAI Official":
+        if preset == "Google Gemini (Official)":
+            base_url = "https://generativelanguage.googleapis.com/v1beta/openai"
+            default_m = "gemini-2.5-pro"
+            default_key = os.getenv("GEMINI_API_KEY", "")
+        elif preset == "OpenAI Official":
             base_url = "https://api.openai.com/v1"
             default_m = "gpt-4o"
+            default_key = os.getenv("OPENAI_API_KEY", "")
         elif preset == "OpenRouter (All Models)":
             base_url = "https://openrouter.ai/api/v1"
             default_m = "anthropic/claude-opus-5.5"
+            default_key = os.getenv("OPENROUTER_API_KEY", "")
         elif preset == "Groq (Fast & Free Tier)":
             base_url = "https://api.groq.com/openai/v1"
             default_m = "llama-3.3-70b-versatile"
+            default_key = os.getenv("GROQ_API_KEY", "")
         else:
             base_url = st.text_input("Custom API Base URL", value="http://localhost:11434/v1")
             default_m = "qwen2.5-coder:7b"
+            default_key = ""
 
-        api_key = st.text_input("API Key", type="password")
+        api_key = st.text_input("API Key", value=default_key, type="password")
         live_models = fetch_available_models(provider, api_key, base_url) if api_key else []
         if live_models:
             st.caption(f"✅ Loaded {len(live_models)} models from endpoint.")
