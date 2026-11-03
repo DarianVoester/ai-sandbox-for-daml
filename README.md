@@ -83,7 +83,7 @@ This repository was developed with substantial AI assistance:
 - **Google Gemini** (Large Language Model by Google LLC) generated the initial architecture, source code and documentation.
 - **Anthropic Claude** (Large Language Model by Anthropic PBC), used through an AI coding agent in VS Code / GitHub Codespaces, performed the code review and bug analysis, refactored the application into modules, wrote `start.sh` (including the Codespaces HTTP/HTTPS port-forwarding fix), the test suite, the Dev Container updates, the dependency security updates and the current documentation.
 
-All changes were reviewed and accepted by the maintainer, but the code has **not** undergone formal security auditing or exhaustive human verification. It may contain bugs, errors, or security vulnerabilities. Use this software entirely at your own risk.
+The code has **not** undergone formal security auditing or exhaustive human verification. It may contain bugs, errors, or security vulnerabilities. Use this software entirely at your own risk.
 
 ## Legal & License
 

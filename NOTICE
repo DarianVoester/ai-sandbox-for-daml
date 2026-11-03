@@ -21,8 +21,7 @@ following AI models:
     port-forwarding detection (start.sh), the test suite (tests/), the
     Dev Container setup, dependency security updates, and documentation.
 
-All AI-generated changes were reviewed and accepted by the repository
-maintainer. This project was created as an educational experiment. The
+This project was created as an educational experiment. The
 AI-generated code and architectural components have not been exhaustively
 audited or verified by a professional software or security engineer. The
 software is provided "AS IS", without any warranty of correctness,

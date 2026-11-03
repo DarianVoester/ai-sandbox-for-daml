@@ -21,6 +21,8 @@ The application executes `daml build` / `daml test` via Python's `subprocess.run
 - `start.sh` may create a self-signed TLS certificate in `.streamlit/certs/` (git-ignored, private key `chmod 600`). It is used only for the hop between the Codespaces proxy and Streamlit.
 - `start.sh` uses the Codespace's own `GITHUB_TOKEN` solely to test the forwarded URL. The token is written to a temporary `chmod 600` header file (never passed on the command line) and deleted immediately.
 
+> **Disclaimer / Intended Environment:** This repository is strictly designed as an isolated single-user sandbox for GitHub Codespaces or local development (`127.0.0.1`). Deploying this application on a publicly accessible server or multi-tenant network is unsupported and done entirely at the user's own risk.
+
 ## Dependency Security
 
 Dependencies were audited with `pip-audit` on 2026-11-03 and minimum versions raised in `requirements.txt` (streamlit ≥ 1.54, sentence-transformers ≥ 5.6, transformers ≥ 5.10, pillow ≥ 13.0, filelock ≥ 4.2.1).
