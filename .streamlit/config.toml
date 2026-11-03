@@ -1,0 +1,12 @@
+[server]
+headless = true
+# No explicit "address": Streamlit then listens on IPv4 AND IPv6. Codespaces resolves
+# "localhost" to ::1 first, so binding only to 0.0.0.0 can cause HTTP 504 behind the proxy.
+port = 8501
+# Required behind the GitHub Codespaces port-forwarding proxy (*.app.github.dev).
+# Acceptable here because port 8501 is forwarded with "private" visibility.
+enableCORS = false
+enableXsrfProtection = false
+
+[browser]
+gatherUsageStats = false

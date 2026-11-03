@@ -14,21 +14,11 @@
     "PATH": "/home/vscode/.daml/bin:${containerEnv:PATH}",
     "PYTHONUNBUFFERED": "1"
   },
-  "forwardPorts": [6865, 7575, 8501],
+  "forwardPorts": [8501],
   "portsAttributes": {
-    "6865": {
-      "label": "Canton Ledger API (gRPC)",
-      "onAutoForward": "silent",
-      "visibility": "private"
-    },
-    "7575": {
-      "label": "Daml JSON API",
-      "onAutoForward": "silent",
-      "visibility": "private"
-    },
     "8501": {
       "label": "Daml AI Tutor (Streamlit)",
-      "onAutoForward": "openBrowser",
+      "onAutoForward": "notify",
       "visibility": "private"
     }
   },

@@ -1,0 +1,81 @@
+Smart Contract Sandbox & AI Tutor for Daml (Canton)
+Copyright 2026 Darian Voester
+
+This product includes software developed by Darian Voester.
+
+=========================================================================
+AI Assistance & Liability Disclosure
+=========================================================================
+Substantial portions of the source code, configuration, and documentation
+in this repository were generated or revised with the assistance of the
+following AI models:
+
+  - Google Gemini (Large Language Model by Google LLC):
+    initial architecture, source code and documentation.
+
+  - Anthropic Claude (Large Language Model by Anthropic PBC), used via an
+    AI coding agent in VS Code / GitHub Codespaces:
+    code review and bug analysis, modular refactoring of the Streamlit
+    application (src/settings.py, daml_runner.py, rag.py, llm.py,
+    lessons.py, app.py), the start script with Codespaces HTTP/HTTPS
+    port-forwarding detection (start.sh), the test suite (tests/), the
+    Dev Container setup, dependency security updates, and documentation.
+
+All AI-generated changes were reviewed and accepted by the repository
+maintainer. This project was created as an educational experiment. The
+AI-generated code and architectural components have not been exhaustively
+audited or verified by a professional software or security engineer. The
+software is provided "AS IS", without any warranty of correctness,
+completeness, or security. Any use of this repository is entirely at the
+user's own risk.
+
+"Claude" and "Anthropic" are trademarks of Anthropic PBC. "Gemini" is a
+trademark of Google LLC. This project is not affiliated with or endorsed
+by Anthropic PBC or Google LLC.
+
+=========================================================================
+Third-Party Software & Trademarks
+=========================================================================
+This repository interacts with or depends upon the following third-party
+components, which are subject to their respective licenses:
+
+1. Daml SDK & Canton
+   Developed by Digital Asset (Switzerland) GmbH.
+   Licensed under the Apache License, Version 2.0.
+   "Daml" and "Canton" are trademarks of Digital Asset (Switzerland) GmbH.
+   This project is an independent educational sandbox and is not officially
+   affiliated with or endorsed by Digital Asset.
+
+2. Qdrant (qdrant-client)
+   Developed by Qdrant Solutions GmbH.
+   Licensed under the Apache License, Version 2.0.
+
+3. SentenceTransformers, Transformers & Hugging Face Hub
+   Licensed under the Apache License, Version 2.0.
+   Embedding model: sentence-transformers/all-MiniLM-L6-v2 (Apache 2.0).
+
+4. Qwen2.5-Coder-0.5B-Instruct (Local Fallback Model, GGUF)
+   Developed by Alibaba Cloud (Qwen Team).
+   Licensed under the Apache License, Version 2.0.
+   Downloaded at runtime from Hugging Face; not redistributed here.
+
+5. llama-cpp-python
+   Developed by Andrei Betlen (abetlen) and contributors.
+   Licensed under the MIT License.
+
+6. Streamlit
+   Developed by Snowflake Inc.
+   Licensed under the Apache License, Version 2.0.
+
+7. PyTorch
+   Licensed under the BSD 3-Clause License.
+
+8. Requests
+   Licensed under the Apache License, Version 2.0.
+
+9. Pydantic
+   Licensed under the MIT License.
+
+Optional remote LLM providers (Anthropic, OpenAI, Google Gemini, OpenRouter,
+Groq) are accessed only when the user enters their own API key; their use is
+subject to the respective provider's terms of service.

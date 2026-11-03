@@ -1,0 +1,39 @@
+module Main where
+
+import Daml.Script
+
+-- Lesson 1 (curriculum/01_propose_accept.md): Propose-Accept pattern.
+-- Exercise: add the choice `Accept : ContractId Asset` (controller owner)
+-- to AssetProposal and let bob exercise it in `setup`.
+
+template Asset
+  with
+    issuer : Party
+    owner : Party
+    description : Text
+  where
+    signatory issuer, owner
+
+template AssetProposal
+  with
+    issuer : Party
+    owner : Party
+    description : Text
+  where
+    signatory issuer
+    observer owner
+
+setup : Script ()
+setup = script do
+  alice <- allocateParty "Alice"
+  bob <- allocateParty "Bob"
+
+  -- Alice (issuer) proposes an Asset to Bob (owner)
+  proposalCid <- submit alice do
+    createCmd AssetProposal with
+      issuer = alice
+      owner = bob
+      description = "Gold bar"
+
+  -- TODO (exercise): let bob exercise `Accept` on proposalCid
+  pure ()

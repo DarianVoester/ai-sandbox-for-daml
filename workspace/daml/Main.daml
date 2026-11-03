@@ -2,33 +2,38 @@ module Main where
 
 import Daml.Script
 
-template Task
+-- Lesson 1 (curriculum/01_propose_accept.md): Propose-Accept pattern.
+-- Exercise: add the choice `Accept : ContractId Asset` (controller owner)
+-- to AssetProposal and let bob exercise it in `setup`.
+
+template Asset
   with
+    issuer : Party
     owner : Party
     description : Text
-    isDone : Bool
   where
-    signatory owner
+    signatory issuer, owner
 
-    choice Complete : ContractId Task
-      controller owner
-      do
-        create this with isDone = True
+template AssetProposal
+  with
+    issuer : Party
+    owner : Party
+    description : Text
+  where
+    signatory issuer
+    observer owner
 
 setup : Script ()
 setup = script do
-  -- 1. Partei anlegen
   alice <- allocateParty "Alice"
+  bob <- allocateParty "Bob"
 
-  -- 2. Alice erstellt eine neue, unerledigte Aufgabe
-  taskCid <- submit alice do
-    createCmd Task with
-      owner = alice
-      description = "RAG Tutor Umgebung einrichten"
-      isDone = False
+  -- Alice (issuer) proposes an Asset to Bob (owner)
+  proposalCid <- submit alice do
+    createCmd AssetProposal with
+      issuer = alice
+      owner = bob
+      description = "Gold bar"
 
-  -- 3. Alice führt die Choice aus und schließt die Aufgabe ab
-  submit alice do
-    exerciseCmd taskCid Complete
-
+  -- TODO (exercise): let bob exercise `Accept` on proposalCid
   pure ()

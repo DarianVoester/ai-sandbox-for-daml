@@ -1,6 +1,19 @@
+# Python / environments
 .venv/
+__pycache__/
+*.pyc
+
+# Local data and build artefacts
 .qdrant_db/
 workspace/.daml/
-__pycache__/
 *.dar
+*.bak
+*.log
+
+# Secrets and certificates (never commit)
 .env
+.env.*
+.streamlit/certs/
+.streamlit/secrets.toml
+*.pem
+*.key
